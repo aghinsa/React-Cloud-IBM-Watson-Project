@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const app = new express();
 
@@ -20,16 +22,12 @@ const api_url = process.env.API_URL;
 
 function getNLUInstance() {
     const NaturalLanguageUnderstandingV1 = require('ibm-watson/natural-language-understanding/v1');
+    
+    // same as const IamAutheticator = require('ibm=watson/auth').IamAuthenticator
     const { IamAuthenticator } = require('ibm-watson/auth');
-    /*
-        same as const IamAutheticator = require('ibm=watson/auth').IamAuthenticator
-    */
-
     const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
-        version: '2021-08-01',
-        authenticator: new IamAuthenticator ({
-            apikey: api_key
-        }),
+        version: '2022-04-07',
+        authenticator: new IamAuthenticator({apikey:api_key}),
         serviceUrl: api_url
     });
     return naturalLanguageUnderstanding;
